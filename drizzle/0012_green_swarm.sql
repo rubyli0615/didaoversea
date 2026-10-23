@@ -1,0 +1,1 @@
+ALTER TABLE `resources` ADD `table_permission_reason` text;

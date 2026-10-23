@@ -1,0 +1,1 @@
+ALTER TABLE `team_websites` ADD `description` text DEFAULT '' NOT NULL;

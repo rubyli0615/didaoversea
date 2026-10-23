@@ -1,0 +1,1 @@
+ALTER TABLE `website_layouts` ADD `operation_id` text DEFAULT '' NOT NULL;

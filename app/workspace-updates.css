@@ -1,0 +1,123 @@
+/* Categorized directories, compact AI cards, FAQ and bounded workspace tabs. */
+.website-category-filters { display:flex; flex-wrap:wrap; gap:8px; margin:0 0 26px }
+.website-category-filters button { display:inline-flex; align-items:center; gap:8px; padding:7px 12px; border:1px solid #e1e5ed; border-radius:8px; background:#fff; color:#526071; font-size:13px }
+.website-category-filters button.active { border-color:var(--navy); color:var(--navy); background:var(--blue-tint); font-weight:600 }
+.website-category-filters button span { color:#8490a2; font-size:11px }
+.website-category-group { margin-bottom:30px }
+.website-category-group>header { display:flex; align-items:center; gap:12px; margin-bottom:14px }
+.website-category-group h2 { margin:0; color:#26344a; font-size:16px; font-weight:650 }
+.website-category-group>header>span { color:#8490a2; font-size:12px }
+.website-category-field { position:relative; margin-top:18px }
+.website-category-field>label { margin-top:0 }
+.website-category-field>button { position:absolute; top:0; right:0; display:inline-flex; gap:4px; align-items:center; color:var(--navy); font-size:12px }
+.website-editor select { width:100%; height:42px; padding:0 12px; border:1px solid #dce1e9; border-radius:8px; color:#344054; background:#fff; font:inherit; font-size:13px }
+.inline-category-create { display:flex; gap:8px; margin-top:10px }
+.inline-category-create input { min-width:0; flex:1 }.inline-category-create button { white-space:nowrap }
+.category-manager { width:min(560px,calc(100vw - 32px)) }.category-manager-list { display:grid; gap:10px; max-height:45vh; overflow-y:auto }
+.category-manager-row { display:grid; grid-template-columns:minmax(0,1fr) 56px 28px; align-items:center; gap:8px }.category-manager-row input { min-width:0 }
+.category-add { margin-top:12px }
+.ai-site-directory .resource-grid.large { grid-template-columns:repeat(auto-fill,minmax(190px,1fr)); gap:16px }
+.ai-site-directory .website-resource-card { min-height:144px; padding:15px 16px; border-radius:12px }
+.ai-site-directory .website-card-heading { gap:10px }.ai-site-directory .website-card-heading h3 { font-size:15px; line-height:1.45; overflow-wrap:anywhere }
+.ai-site-directory .shortcut-circle { width:36px; height:36px; font-size:16px }
+.ai-site-directory .website-card-heading>svg { width:13px; height:13px }
+.ai-site-directory .website-resource-card>p { display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; margin:10px 0 12px; font-size:12px; line-height:1.7 }
+.ai-site-directory .website-resource-card footer { gap:6px; padding-top:9px; font-size:10px }.ai-site-directory .website-resource-card footer>span { min-width:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis }
+.faq-editor-row { position:relative; margin-bottom:18px; padding:18px 42px 18px 18px; border:1px solid #e2e7ef; border-radius:10px; background:#fafbfd }
+.faq-editor-row>label+label { margin-top:12px }.faq-editor-row>.icon-button { position:absolute; right:10px; top:14px }
+.resource-faq details { padding:15px 0; border-top:1px solid #edf0f5 }.resource-faq details:last-child { padding-bottom:0 }
+.resource-faq summary { cursor:pointer; color:#26344a; font-size:14px; font-weight:600; line-height:1.7 }.resource-faq p { margin:12px 0 0; overflow-wrap:anywhere }
+.workspace-tabs-shell { position:relative; display:grid; grid-template-columns:minmax(0,1fr) 58px; align-items:center; flex:1; min-width:0; height:100%; gap:6px }
+.workspace-close-all { flex:none; display:flex; align-items:center; justify-content:center; gap:4px; width:58px; min-width:58px; min-height:30px; padding:4px 6px; border:0; border-radius:7px; color:#7b8798; background:transparent; font-size:10px }
+.workspace-close-all:hover { color:var(--navy); background:#eef0f8 }
+.workspace-tab-menu-toggle { display:grid; place-items:center; flex:none; width:18px; height:23px; padding:0; border:0; border-radius:5px; background:transparent; color:#7b8798; opacity:0 }
+.workspace-tab:hover .workspace-tab-menu-toggle,.workspace-tab:focus-within .workspace-tab-menu-toggle,.workspace-tab-menu-toggle[aria-expanded="true"] { opacity:1 }
+.workspace-tab-menu-toggle:hover { color:var(--navy); background:#e4e7f0 }
+.workspace-tab-dropdown { position:absolute; top:calc(100% - 2px); z-index:80; display:grid; width:190px; padding:6px; border:1px solid #e2e6ef; border-radius:10px; background:#fff; box-shadow:0 12px 30px #00084615 }
+.workspace-tab-dropdown button { padding:9px 12px; border:0; border-radius:6px; color:#344054; background:transparent; text-align:left; font-size:13px }.workspace-tab-dropdown button:hover:not(:disabled) { color:var(--navy); background:#eef0f8 }
+@media(max-width:720px) { .ai-site-directory .resource-grid.large { grid-template-columns:repeat(auto-fill,minmax(155px,1fr)); gap:12px }.ai-site-directory .website-resource-card { padding:13px; min-height:140px }.website-catalog-toolbar .secondary-button,.website-catalog-toolbar .primary-button { min-height:36px; font-size:12px }.workspace-close-all span { display:none }.workspace-tabs-shell { grid-template-columns:minmax(0,1fr) 30px }.workspace-close-all { min-width:30px; width:30px; padding:4px }.workspace-tab-menu-toggle { opacity:1 }.workspace-tab-dropdown { width:175px } }
+/* Keep document width and header controls unchanged when categories fold. */
+html { scrollbar-gutter:stable; overflow-y:scroll }
+.workspace-header { display:grid; grid-template-columns:40px minmax(0,1fr) auto }
+.workspace-header .workspace-tabs { overflow-x:auto; overflow-y:hidden; scrollbar-width:none }
+.workspace-header .workspace-tabs::-webkit-scrollbar { display:none }
+.workspace-header .workspace-close-all { justify-self:end }
+.workspace-header .topbar-actions { justify-self:end }
+.mcp-evidence-note { margin:18px 0 0; color:#667085; font-size:12px; line-height:1.8 }
+.mcp-tools-section .permission-table,.mcp-data-section .permission-table { width:100%; table-layout:fixed }
+.mcp-tools-section .permission-table th:first-child,.mcp-data-section .permission-table th:first-child { width:48% }
+.mcp-data-section .permission-table td,.mcp-tools-section .permission-table td { overflow-wrap:anywhere }
+.detail-loading { padding:32px 0; color:var(--muted); min-height:250px }
+.detail-loading h1 { color:var(--navy); font-size:28px }
+.other-resource-editor .resource-editor-form { max-width:1100px }
+@media(max-width:720px) { .workspace-header { grid-template-columns:40px minmax(0,1fr) auto }.mcp-tools-section .permission-table,.mcp-data-section .permission-table { min-width:560px } }
+.mcp-tools-section .permission-table th:nth-child(2),.mcp-data-section .permission-table th:nth-child(2) { width:30% }
+.mcp-tools-section .permission-table th:nth-child(3),.mcp-data-section .permission-table th:nth-child(3) { width:22% }
+@media(max-width:720px) { .notification-panel { position:fixed; top:60px; left:12px; right:27px; width:auto; max-width:none } }
+.resource-live-update{position:fixed;right:24px;bottom:24px;z-index:55;display:flex;align-items:center;gap:16px;max-width:min(620px,calc(100vw - 32px));padding:14px 18px;border:1px solid #d9dfeb;border-radius:12px;background:#fff;box-shadow:0 8px 32px #00084618;color:#344054;font-size:13px;line-height:1.6}.resource-live-update .secondary-button{flex:none}
+.page-load-error{min-height:55vh;padding:36px 24px;color:#344054}.page-load-error h2{font-size:22px;color:var(--navy)}.page-load-error p{line-height:1.8}.page-load-error>div{display:flex;flex-wrap:wrap;gap:12px}
+@media(max-width:600px){.resource-live-update{right:16px;bottom:16px;align-items:flex-start;flex-direction:column;gap:10px}}
+/* Keep wrapping arrangement actions in normal flow, never over a compact card. */
+.common-websites-page .website-directory-item.with-edit-actions{padding-bottom:0}
+.common-websites-page .website-directory-actions{position:relative;right:auto;bottom:auto;display:flex;align-items:center;justify-content:flex-end;flex-wrap:wrap;gap:8px;min-height:36px;padding-top:4px}
+.shortcut-group>header{justify-content:flex-start;gap:8px}
+.shortcut-group .team-add{margin-left:auto}
+@media(max-width:600px){.common-websites-page .website-directory-actions{gap:5px}.common-websites-page .website-directory-actions button{font-size:11px}.shortcut-group>header{flex-wrap:wrap}}
+/* Matching prerequisite headings; one shared command toolbar for install and usage. */
+.table-application-reason>h3{margin:0 0 10px;font-size:14px;line-height:1.8;font-weight:600;color:#33485f}
+.resource-documents{display:flex;flex-wrap:wrap;gap:8px}
+.resource-documents .inline-action{margin-top:14px}
+.continuous-detail .mcp-key-hint{font-size:12px;color:#667085;margin:10px 0 0}
+.mcp-connection-section .installation-instructions{margin-top:16px}
+/* Drag the card itself. Clicks remain links; edit/delete controls stay independent. */
+.draggable-website,.draggable-website>a,.draggable-group-heading,.draggable-group-heading>.website-category-toggle,.draggable-group-heading>.shortcut-group-toggle{cursor:grab}
+.draggable-website:active,.draggable-group-heading:active{cursor:grabbing}
+.draggable-website.dragging{opacity:.45}
+.draggable-website.drag-over{outline:2px solid #5369a6;outline-offset:4px;border-radius:13px}
+.website-category-group.drag-over>header,.shortcut-group.drag-over>header{background:#eaf0fb;outline:2px solid #5369a6;outline-offset:3px;border-radius:9px}
+.website-arrangement-hint{margin:0 0 18px;color:#667085;font-size:12px;line-height:1.8}
+.draggable-group-heading{min-height:40px}
+.group-order-mode{padding:0!important;margin:0 0 10px!important;border:0!important}
+.group-order-mode>header{min-height:58px;padding:10px 14px;margin:0;background:white;border:1px solid #d8e0ec;border-radius:10px;gap:12px}
+.group-order-mode>header>svg{color:#8290a6;flex:none}
+.group-order-mode .website-category-toggle,.group-order-mode .shortcut-group-toggle{flex:1;min-width:0}
+.group-sort-actions{display:flex;gap:6px;margin-left:auto}
+.group-sort-actions button{min-height:34px;width:34px;padding:6px}
+.group-sort-toggle[aria-pressed=true]{border-color:var(--navy);color:var(--navy);background:#edf1fb}
+.website-card-heading img,.website-card-heading .shortcut-circle,.website-shortcut .shortcut-circle{pointer-events:none}
+.shortcut-directory>.catalog-toolbar{flex-wrap:wrap;gap:10px}
+@media(max-width:600px){.group-order-mode>header{padding:8px 10px;gap:8px}.group-order-mode h2{font-size:14px}.group-sort-actions{gap:3px}.website-arrangement-hint{font-size:12px}.common-websites-page .catalog-toolbar .group-sort-toggle{white-space:nowrap}.shortcut-directory>.catalog-toolbar>.searchbox{flex:1 0 100%}}
+.website-arrangement-hint .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
+.draggable-website:focus-visible{outline:3px solid #5369a650;outline-offset:4px;border-radius:12px}
+/* Precise insertion gaps never alter layout while dragging. */
+.website-category-group,.shortcut-group,.website-directory-item,.website-shortcut,.category-manager-row{position:relative}
+.drop-before::before,.drop-after::before{content:"";position:absolute;z-index:4;pointer-events:none;background:#304dca;border-radius:3px;box-shadow:0 0 0 2px #fff}
+.website-category-group.drop-before::before,.shortcut-group.drop-before::before,.category-manager-row.drop-before::before{height:3px;left:0;right:0;top:-10px}
+.website-category-group.drop-after::before,.shortcut-group.drop-after::before,.category-manager-row.drop-after::before{height:3px;left:0;right:0;bottom:-10px}
+.website-directory-item.drop-before::before,.website-shortcut.drop-before::before{width:3px;top:0;bottom:0;left:-10px}
+.website-directory-item.drop-after::before,.website-shortcut.drop-after::before{width:3px;top:0;bottom:0;right:-10px}
+/* One insertion marker per target: do not retain the opposite edge when drag direction changes. */
+.drop-before::after,.drop-after::after{content:none!important}
+.drop-before::before{bottom:auto;right:auto}
+.drop-after::before{top:auto;left:auto}
+.website-category-group.drop-before::before,.shortcut-group.drop-before::before,.category-manager-row.drop-before::before{left:0;right:0;bottom:auto}
+.website-category-group.drop-after::before,.shortcut-group.drop-after::before,.category-manager-row.drop-after::before{left:0;right:0;top:auto}
+.website-directory-item.drop-before::before,.website-shortcut.drop-before::before{top:0;bottom:0;right:auto}
+.website-directory-item.drop-after::before,.website-shortcut.drop-after::before{top:0;bottom:0;left:auto}
+.side-documents{display:grid;gap:0;margin:8px 0 12px}.side-documents a{margin-top:8px}
+.mcp-key-hint svg{display:inline;vertical-align:middle;margin-right:5px}
+.skill-analysis header h3{font-size:17px;color:var(--navy)}.skill-analysis h3 span{font-size:12px;color:#64748b;font-weight:500;margin-left:8px}.skill-analysis header p,.skill-analysis fieldset p,.analysis-limit,.analysis-window,.analysis-boundary{font-size:13px;line-height:1.8;color:#5a687d}
+.skill-analysis fieldset{min-width:0;margin:20px 0;padding:20px;border:1px solid #dce2ed;border-radius:12px}.skill-analysis legend{padding:0 8px;font-size:14px;font-weight:650;color:var(--navy)}
+.analysis-input-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.skill-analysis label:not(.analysis-consent){display:grid;gap:8px;font-size:13px;color:#344054}.skill-analysis input:not([type=checkbox]),.skill-analysis select{min-width:0;width:100%;padding:11px 12px;border:1px solid #ccd6e5;border-radius:8px;background:white;font:inherit;font-size:14px;line-height:1.5;color:var(--navy)}
+.analysis-metrics{display:flex;flex-wrap:wrap;gap:14px;margin-top:18px}.skill-analysis .analysis-metrics label,.analysis-consent{display:flex!important;align-items:flex-start;gap:7px!important;font-size:13px;line-height:1.7}.analysis-consent input,.analysis-metrics input{width:16px;height:16px;flex:none;margin-top:3px;accent-color:var(--navy)}
+.analysis-controls{display:flex;align-items:center;gap:12px;flex-wrap:wrap}.analysis-controls .primary-button{flex:1}.analysis-controls span{font-size:12px;color:#526071}.analysis-limit{margin:12px 0}.analysis-result{margin-top:24px;padding-top:20px;border-top:1px solid #e3e7ef}.analysis-result>p,.analysis-result details{font-size:12px;color:#526071;line-height:1.8}.analysis-result small{display:block;font-size:11px;color:#64748b}.analysis-result .command-block{margin-top:18px}.analysis-command-preview{margin-top:20px}.analysis-command-preview summary{font-size:13px;color:var(--navy);cursor:pointer;margin-bottom:12px}
+@media(max-width:760px){.analysis-input-grid{grid-template-columns:1fr}.skill-analysis fieldset{padding:14px}.analysis-result .permission-table{min-width:580px}}
+.analysis-result .usage-code pre{font-family:inherit;font-size:14px;line-height:1.9}
+.document-link-fields{display:grid;grid-template-columns:minmax(0,1fr);gap:18px;margin-top:20px}
+.document-link-fields label{margin:0!important}
+.command-block .copy-usage{background:var(--navy);border:1px solid var(--navy);color:#fff;min-height:30px;padding:6px 10px}
+.command-block .copy-usage:hover{background:#161e60;border-color:#161e60}
+.command-block .copy-usage:focus-visible{outline:3px solid #7e8ece;outline-offset:2px}
+.copyable-text p{margin:0;padding:18px 20px;white-space:pre-wrap;overflow-wrap:anywhere;font:inherit;font-size:14px;line-height:1.85;color:#344054}
+.usage-guidance{margin-bottom:20px}.usage-guidance h3{font-size:14px;color:#33485f}
+.installation-guide{white-space:pre-line}

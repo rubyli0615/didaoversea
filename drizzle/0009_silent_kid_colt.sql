@@ -1,0 +1,1 @@
+ALTER TABLE `resources` ADD `tool_descriptions` text;

@@ -1,0 +1,1 @@
+ALTER TABLE `resources` ADD `resource_module` text;

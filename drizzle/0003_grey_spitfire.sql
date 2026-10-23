@@ -1,0 +1,1 @@
+CREATE UNIQUE INDEX `team_websites_team_url_unique` ON `team_websites` (`team_id`,`url`);
